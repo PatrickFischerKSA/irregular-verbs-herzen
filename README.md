@@ -43,3 +43,11 @@ Start the game after reading, match 30 shuffled cards, and reopen the summary at
 - `great-expectations.html`: reading page and game
 - `memory.css`: responsive literary design
 - `memory.js`: original pairs, shuffle and game logic
+
+### Further Great Expectations levels
+
+- Level 2: 8 multiple-choice questions about family, adoption, love, financial support, contrasts and cause-and-effect.
+- Level 3: 8 interpretation tasks, each requiring both a conclusion and a matching piece of textual evidence. Covers moral growth, class, assumptions, character connections and the limits of what the summary establishes.
+- Immediate explanations, corrections and retry; separate completion and first-attempt scores for each level. The summary can be opened from either level. Switching levels preserves submitted answers and the current memory game for the page session.
+- All questions use the supplied summary, without requiring details from an unprovided edition.
+- `expectations-quiz.js`: questions, evidence and quiz behaviour.
