@@ -33,3 +33,13 @@ Die Dateien ins Hauptverzeichnis eines GitHub-Repositories kopieren. In **Settin
 - `app.js`: Prüfung, Erklärungen, Statistik und Speicherung
 
 Zum Bearbeiten genügen ein Texteditor und ein Browser. Kein Build-Schritt nötig.
+
+## Great Expectations – Interactive Memory
+
+English-language reading and memory activity at `great-expectations.html`, linked from the verb trainer. Includes the exact supplied three-paragraph summary and all **15 supplied pairs** (the brief calls them 20, but lists 15). No extra pairs have been invented.
+
+Start the game after reading, match 30 shuffled cards, and reopen the summary at any time without losing the current game. Mismatches stay open until “Try another pair” is selected. Matched cards remain visible. A completion screen reinforces the main message. No timer or external dependencies; keyboard and mobile support, modal summary, restart confirmation, and optional hearts/skulls respecting reduced motion. The original Basic/Advanced verb trainer remains available.
+
+- `great-expectations.html`: reading page and game
+- `memory.css`: responsive literary design
+- `memory.js`: original pairs, shuffle and game logic
