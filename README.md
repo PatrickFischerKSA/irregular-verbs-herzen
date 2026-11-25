@@ -51,3 +51,7 @@ Start the game after reading, match 30 shuffled cards, and reopen the summary at
 - Immediate explanations, corrections and retry; separate completion and first-attempt scores for each level. The summary can be opened from either level. Switching levels preserves submitted answers and the current memory game for the page session.
 - All questions use the supplied summary, without requiring details from an unprovided edition.
 - `expectations-quiz.js`: questions, evidence and quiz behaviour.
+
+### Reset controls
+
+Each Great Expectations level has its own reset button, clearing only that level. “Reset all levels” clears Memory, quiz answers, scores and current questions, then returns to Level 1. All reset actions show a confirmation dialog; cancellation and Escape keep progress unchanged. The separate verb trainer is unaffected.

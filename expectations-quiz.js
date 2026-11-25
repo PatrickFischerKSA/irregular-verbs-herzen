@@ -48,6 +48,7 @@ function quizFeedback(q,record){
 function renderExpectationsQuiz(){
  const level=activeExpectationsLevel,config=EXPECTATIONS_LEVELS[level],state=quizProgress[level],q=config.questions[state.index],record=state.answers[state.index];
  quizById('quiz-subtitle').textContent=config.subtitle;quizById('quiz-title').textContent=config.title;quizById('quiz-intro').textContent=config.intro;
+ quizById('reset-quiz-level').textContent='Reset Level '+level;
  quizById('quiz-position').textContent=`Question ${state.index+1} of ${config.questions.length}`;
  const solved=Object.values(state.answers).filter(r=>r.solved).length;
  const first=Object.values(state.answers).filter(r=>r.first===true).length;
@@ -86,3 +87,37 @@ quizById('quiz-level-up').addEventListener('click',()=>setExpectationsLevel(acti
 quizById('quiz-summary').addEventListener('click',()=>quizById('summary-dialog').showModal());
 for(const n of [1,2,3])quizById('expectations-level-'+n).addEventListener('click',()=>setExpectationsLevel(n));
 quizById('start').addEventListener('click',()=>{quizById('expectations-levels').hidden=false;setExpectationsLevel(1);});
+
+let pendingExpectationsReset=null;
+function requestExpectationsReset(target){
+ pendingExpectationsReset=target;
+ const all=target==='all';
+ quizById('reset-learning-title').textContent=all?'Reset all three levels?':'Reset Level '+target+'?';
+ quizById('reset-learning-description').textContent=all?'This clears your Memory game and all answers, scores and progress in Levels 2 and 3. You will return to Level 1.':'This clears all answers, scores and progress in Level '+target+'. The other levels will stay unchanged.';
+ quizById('confirm-learning-reset').textContent=all?'Reset all levels':'Reset Level '+target;
+ quizById('reset-learning-dialog').showModal();
+}
+function resetExpectations(target){
+ if(target==='all'){
+  quizProgress[2]={index:0,answers:{}};
+  quizProgress[3]={index:0,answers:{}};
+  newGame();
+  quizById('memory-particles').replaceChildren();
+  setExpectationsLevel(1);
+  board.children[0].focus();
+ }else{
+  quizProgress[target]={index:0,answers:{}};
+  setExpectationsLevel(target);
+  quizById('quiz-question').focus();
+ }
+}
+quizById('reset-quiz-level').addEventListener('click',()=>requestExpectationsReset(activeExpectationsLevel));
+quizById('reset-all-levels').addEventListener('click',()=>requestExpectationsReset('all'));
+quizById('cancel-learning-reset').addEventListener('click',()=>{pendingExpectationsReset=null;quizById('reset-learning-dialog').close();});
+quizById('reset-learning-dialog').addEventListener('cancel',()=>{pendingExpectationsReset=null;});
+quizById('confirm-learning-reset').addEventListener('click',()=>{
+ const target=pendingExpectationsReset;
+ pendingExpectationsReset=null;
+ quizById('reset-learning-dialog').close();
+ if(target!==null)resetExpectations(target);
+});
