@@ -14,6 +14,7 @@ Die Dateien ins Hauptverzeichnis eines GitHub-Repositories kopieren. In **Settin
 
 - Alle 58 Sätze und erwarteten Zeitformen entsprechen den beiden PDFs.
 - Korrektur unmittelbar nach „Antwort prüfen“ oder Enter. Unfertige Eingaben werden nicht während des Tippens als Fehler gewertet.
+- Deutsche Bedeutung aller 58 Verben direkt bei der englischen Grundform sichtbar, passend zum Satzkontext.
 - Pro Satz: Lösung, Zeitform, konkretes Signal und Erklärung zur Bildung.
 - Gross-/Kleinschreibung, überzählige Leerzeichen, abschliessende Satzzeichen und passende Kurzformen wie `'ve found` werden toleriert.
 - Ausgewählte gültige Alternativen werden akzeptiert, u. a. amerikanisches `has gotten` und `betted`. Der Trainer orientiert sich ansonsten an den Zielzeitformen des Arbeitsblatts und ist kein universeller Grammatikprüfer.
