@@ -80,12 +80,13 @@ function normalize(s){return s.normalize('NFKC').trim().toLowerCase().replace(/[
 function accepted(q){const base=[q.answer,...(VARIANTS[q.id]||[])];return base.flatMap(a=>[a,a.replace(/^have /,"'ve ").replace(/^has /,"'s ").replace(/^is /,"'s ").replace(/^are /,"'re ").replace(/^am /,"'m ")]).map(normalize);}
 function isCorrect(q,value){return accepted(q).includes(normalize(value));}
 let saved={};try{saved=JSON.parse(localStorage.getItem(STORAGE)||'{}')||{};}catch{}
+let level=saved.level==='advanced'?'advanced':'basic';
 let records=saved.records&&typeof saved.records==='object'?saved.records:{};
 for(const [id,r] of Object.entries(records)){if(!QUESTIONS.some(q=>String(q.id)===id)||!r||typeof r!=='object')delete records[id];}
 let current=QUESTIONS.some(q=>q.id===saved.current)?saved.current:1;
 let order=QUESTIONS.map(q=>q.id), mode='all', streak=0, empty=false, retryAfterSolve=false;
 const motion=$('motion');motion.checked=saved.motion!==false&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
-function persist(){try{localStorage.setItem(STORAGE,JSON.stringify({records,current,motion:motion.checked}));}catch{$('storage-note').textContent='Speichern ist im Browser nicht verfügbar. Du kannst trotzdem üben.';}}
+function persist(){try{localStorage.setItem(STORAGE,JSON.stringify({records,current,level,motion:motion.checked}));}catch{$('storage-note').textContent='Speichern ist im Browser nicht verfügbar. Du kannst trotzdem üben.';}}
 function candidates(){return order.filter(id=>{const q=QUESTIONS[id-1];return ($('tense-filter').value==='all'||q.tense===$('tense-filter').value)&&(mode==='all'||records[id]?.needsPractice);});}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function stats(){const rs=Object.values(records);const count=rs.filter(r=>r.solved).length;const first=rs.filter(r=>typeof r.first==='boolean');$('solved').innerHTML=count+'<span>/58</span>';$('accuracy').textContent=first.length?Math.round(100*first.filter(r=>r.first).length/first.length)+' %':'–';$('streak').textContent=streak;$('progress').value=count;$('progress').textContent=count+' von 58';$('percent').textContent=Math.round(count/58*100)+' %';$('error-count').textContent=rs.filter(r=>r.needsPractice).length;
@@ -93,11 +94,11 @@ function stats(){const rs=Object.values(records);const count=rs.filter(r=>r.solv
 function setTabs(){$('all-mode').setAttribute('aria-pressed',mode==='all');$('error-mode').setAttribute('aria-pressed',mode==='errors');}
 function feedback(title,body,type=''){$('feedback').className='feedback '+type;$('feedback').innerHTML=`<h3>${title}</h3>${body}`;}
 function explanation(q){return `<p><b>${q.tense}</b></p><p>${escapeHTML(NOTES[q.id-1])}</p><p>${RULES[q.tense]}</p>`;}
-function render(focus=false){retryAfterSolve=false;const list=candidates();empty=!list.length;
+function render(focus=false){renderLevel();retryAfterSolve=false;const list=candidates();empty=!list.length;
  $('question-content').hidden=empty;
  let e=$('empty');if(e)e.remove();
  if(empty){e=document.createElement('div');e.id='empty';e.className='empty';const total=Object.values(records).filter(r=>r.needsPractice).length;e.innerHTML=`<h2>${mode==='errors'?'Gut gemacht!':'Keine Aufgaben'}</h2><p>${mode==='errors'?(total?'In dieser Zeitform gibt es keine Fehler zum Wiederholen.':'Du hast keine offenen Fehler zum Wiederholen.'):'Wähle eine andere Zeitform.'}</p><button class="primary" id="back-all">Alle Aufgaben üben</button>`;$('question-content').after(e);$('back-all').onclick=()=>{mode='all';$('tense-filter').value='all';setTabs();render(true);};$('question-label').textContent='DEIN TRAINING';$('verb').textContent='Weiter so';$('position').textContent='0 Aufgaben';$('previous').disabled=$('next').disabled=true;stats();return;}
- if(!list.includes(current))current=list[0];const q=QUESTIONS[current-1],r=records[current];const parts=q.sentence.split('___');$('before').textContent=parts[0];$('after').textContent=parts[1];$('question-label').textContent=`AUFGABE ${String(q.id).padStart(2,'0')} / 58`;$('verb').textContent='to '+q.verb+' · '+q.german;$('easy-help').replaceChildren();const easyTitle=document.createElement('b');easyTitle.textContent=EASY[q.tense][0]+' ('+q.tense+')';const easyText=document.createElement('p');easyText.textContent=EASY[q.tense][1];$('easy-help').append(easyTitle,easyText);$('answer').value=r?.value||'';$('answer').disabled=!!r?.solved;$('answer').className=r?.solved?'correct':'';$('answer').setAttribute('aria-invalid','false');$('feedback').innerHTML='';$('feedback').className='';$('check').textContent=r?.solved?'Nächste Aufgabe':'Antwort prüfen';$('hint').hidden=!!r?.solved;$('position').textContent=`${list.indexOf(current)+1} von ${list.length}`;$('previous').disabled=list.indexOf(current)===0;$('next').disabled=list.indexOf(current)===list.length-1;
+ if(!list.includes(current))current=list[0];const q=QUESTIONS[current-1],r=records[current];const parts=q.sentence.split('___');$('before').textContent=parts[0];$('after').textContent=parts[1];$('question-label').textContent=`AUFGABE ${String(q.id).padStart(2,'0')} / 58`;$('verb').textContent='to '+q.verb+' · '+q.german;$('easy-help').replaceChildren();const easyTitle=document.createElement('b');easyTitle.textContent=EASY[q.tense][0]+' ('+q.tense+')';const easyText=document.createElement('p');easyText.textContent=EASY[q.tense][1];$('easy-help').append(easyTitle,easyText);$('answer').value=r?.value||'';$('answer').disabled=!!r?.solved;$('answer').className=r?.solved?'correct':'';$('answer').setAttribute('aria-invalid','false');$('feedback').innerHTML='';$('feedback').className='';$('check').textContent=r?.solved?'Nächste Aufgabe':'Antwort prüfen';$('hint').hidden=!!r?.solved||level==='advanced';$('position').textContent=`${list.indexOf(current)+1} von ${list.length}`;$('previous').disabled=list.indexOf(current)===0;$('next').disabled=list.indexOf(current)===list.length-1;
  if(r?.solved)feedback('♥ Richtig gelöst',`<p class="solution">${escapeHTML(r.value||q.answer)}</p>${explanation(q)}`,'good');
  stats();persist();if(focus&&!r?.solved)$('answer').focus();}
 function burst(good){if(!motion.checked||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const rect=$('answer').getBoundingClientRect();for(let i=0;i<14;i++){const el=document.createElement('span');el.className='particle'+(good?'':' skull');el.textContent=good?'♥':'☠';el.style.left=(rect.left+rect.width/2)+'px';el.style.top=(rect.top+rect.height/2)+'px';el.style.setProperty('--dx',((Math.random()-.5)*340)+'px');el.style.setProperty('--dy',(-80-Math.random()*210)+'px');el.style.setProperty('--scale',(.6+Math.random()*.9));el.style.setProperty('--rotation',((Math.random()-.5)*110)+'deg');$('particles').append(el);setTimeout(()=>el.remove(),1350);}}
@@ -106,9 +107,26 @@ $('answer-form').addEventListener('submit',e=>{e.preventDefault();if(empty)retur
  if(ok){if(!wasSolved)streak++;$('answer').disabled=true;$('answer').className='correct';$('answer').setAttribute('aria-invalid','false');$('check').textContent='Nächste Aufgabe';$('hint').hidden=true;feedback('♥ Genau richtig!',`<p class="solution">${escapeHTML(value.trim())}</p>${normalize(value)!==normalize(q.answer)?`<p>Auch möglich. Die Musterlösung lautet <b>${escapeHTML(q.answer)}</b>.</p>`:''}${explanation(q)}`,'good');retryAfterSolve=mode==='errors';$('check').focus();}
  else{streak=0;$('answer').setAttribute('aria-invalid','true');feedback('☠ Noch nicht – schau genauer hin.',`<p>Deine Antwort: <b>${escapeHTML(value)}</b></p><p>Gesuchte Lösung: <strong class="solution">${escapeHTML(q.answer)}</strong></p>${explanation(q)}<p>Ändere deine Antwort und prüfe noch einmal.</p>`);$('answer').focus();$('answer').select();}
  burst(ok);stats();persist();});
-$('hint').onclick=()=>{if(empty)return;const q=QUESTIONS[current-1];feedback('Ein kleiner Tipp',`<p>Gesucht ist <b>${q.tense}</b>.</p><p>${RULES[q.tense]}</p>`,'tip');};
+$('hint').onclick=()=>{if(empty||level==='advanced')return;const q=QUESTIONS[current-1];feedback('Ein kleiner Tipp',`<p>Gesucht ist <b>${q.tense}</b>.</p><p>${RULES[q.tense]}</p>`,'tip');};
 $('next').onclick=()=>move(1);$('previous').onclick=()=>move(-1);
 $('all-mode').onclick=()=>{mode='all';setTabs();render();};$('error-mode').onclick=()=>{mode='errors';setTabs();render();};$('tense-filter').onchange=()=>render();
 $('shuffle').onclick=()=>{for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}current=candidates()[0]||current;render();};
 $('reset').onclick=()=>{if(confirm('Alle gespeicherten Antworten und deinen Lernstand auf diesem Gerät löschen?')){records={};streak=0;current=1;mode='all';order=QUESTIONS.map(q=>q.id);$('tense-filter').value='all';setTabs();persist();render();}};
+function renderLevel(){
+ const basic=level==='basic';
+ $('basic-level').setAttribute('aria-pressed',String(basic));
+ $('advanced-level').setAttribute('aria-pressed',String(!basic));
+ $('level-description').textContent=basic?'Mit Zeitform und Bildungshilfe':'Zeitform selbst erkennen · Erklärung nach der Korrektur';
+ $('easy-help').hidden=!basic;
+ $('tense-filter').hidden=!basic;
+ if(!basic)$('tense-filter').value='all';
+ $('instruction').textContent=basic?'Setze das Verb in die Lücke. Die Hilfe zeigt dir, wie.':'Setze das Verb in die passende Zeitform.';
+}
+function changeLevel(next){
+ const draft=$('answer').value;
+ level=next;render();
+ if(!empty&&!records[current]?.solved)$('answer').value=draft;
+}
+$('basic-level').onclick=()=>changeLevel('basic');
+$('advanced-level').onclick=()=>changeLevel('advanced');
 motion.onchange=persist;render();

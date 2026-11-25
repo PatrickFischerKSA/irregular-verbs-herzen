@@ -3,3 +3,5 @@
 .card-top{gap:12px;flex-wrap:wrap}.verb-tag{white-space:normal;overflow-wrap:anywhere}
 
 .easy-help{background:#eef2ff;border-left:3px solid #667ee2;border-radius:8px;padding:13px 16px;margin:0 0 22px;font-size:15px;color:#35476e}.easy-help b{font-size:15px}.easy-help p{margin:5px 0 0;line-height:1.6}
+
+[hidden]{display:none!important}.level-bar{display:flex;align-items:center;gap:18px;margin:0 0 22px}.level-bar p{font-size:14px;color:var(--muted);margin:0}.level-bar .tabs button{padding:9px 20px}@media(max-width:600px){.level-bar{align-items:flex-start;flex-direction:column;gap:8px}}
