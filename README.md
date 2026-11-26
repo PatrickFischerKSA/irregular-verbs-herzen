@@ -55,3 +55,7 @@ Start the game after reading, match 30 shuffled cards, and reopen the summary at
 ### Reset controls
 
 Each Great Expectations level has its own reset button, clearing only that level. “Reset all levels” clears Memory, quiz answers, scores and current questions, then returns to Level 1. All reset actions show a confirmation dialog; cancellation and Escape keep progress unchanged. The separate verb trainer is unaffected.
+
+## Victorian Literature chapter
+
+`victorian/index.html` adds the full Victorian Novel & Great Expectations course to the existing website. It uses the supplied Word sheet and preserves all 40 original flashcards verbatim, with 8 free levels, 112 additional exercises, 5 memory games, bilingual exam phrases, a 135-word exam model, review, local browser progress, points, read-aloud when supported, and reset controls. Complex free writing uses transparent self-assessment without a simulated automatic grade. See `victorian/README.md` for material, scoring, data files and validation.

@@ -1,0 +1,140 @@
+[
+  {
+    "id": "terms",
+    "title": "Literary term — definition",
+    "pairs": [
+      [
+        "Realism",
+        "A recognisable social world"
+      ],
+      [
+        "Didacticism",
+        "An intention to teach"
+      ],
+      [
+        "Omniscient narrator",
+        "A voice with knowledge beyond one character"
+      ],
+      [
+        "Bildungsroman",
+        "A narrative of formation"
+      ],
+      [
+        "Cliffhanger",
+        "An important situation left unresolved"
+      ],
+      [
+        "Social criticism",
+        "Questioning injustice and harmful values"
+      ]
+    ]
+  },
+  {
+    "id": "authors",
+    "title": "Author / work — literary emphasis",
+    "pairs": [
+      [
+        "Thackeray: Vanity Fair",
+        "Social conventions in a novel of manners"
+      ],
+      [
+        "Dickens: humanitarian fiction",
+        "Sympathy for vulnerable people"
+      ],
+      [
+        "Charlotte Brontë: Jane Eyre",
+        "Formation of an individual’s identity"
+      ],
+      [
+        "Carroll: Alice’s Adventures in Wonderland",
+        "Nonsense and disrupted logic in prose"
+      ],
+      [
+        "Lear: A Book of Nonsense",
+        "Playful nonsense verse"
+      ]
+    ]
+  },
+  {
+    "id": "characters",
+    "title": "Character — analytical function",
+    "pairs": [
+      [
+        "Pip",
+        "Ambition followed by moral reflection"
+      ],
+      [
+        "Joe",
+        "Loyalty beyond social polish"
+      ],
+      [
+        "Estella",
+        "Romantic desire entangled with class shame"
+      ],
+      [
+        "Miss Havisham",
+        "Wealth and a disturbing relation to the past"
+      ],
+      [
+        "Magwitch",
+        "A benefactor who challenges prejudice against a convict"
+      ]
+    ]
+  },
+  {
+    "id": "features",
+    "title": "Literary feature — novel example",
+    "pairs": [
+      [
+        "Bildungsroman",
+        "Pip’s values change through experience"
+      ],
+      [
+        "Humanitarian concern",
+        "Magwitch is not reduced to his public label"
+      ],
+      [
+        "Gothic atmosphere",
+        "The unsettling decay of Miss Havisham’s house"
+      ],
+      [
+        "Class criticism",
+        "Pip feels embarrassed by the loyal Joe"
+      ],
+      [
+        "Retrospective first person",
+        "Adult Pip evaluates his younger self"
+      ]
+    ]
+  },
+  {
+    "id": "translations",
+    "title": "English term — German meaning",
+    "pairs": [
+      [
+        "Instalment",
+        "Fortsetzungsteil"
+      ],
+      [
+        "Urbanisation",
+        "Verstädterung"
+      ],
+      [
+        "Social inequality",
+        "Soziale Ungleichheit"
+      ],
+      [
+        "Pen name",
+        "Pseudonym"
+      ],
+      [
+        "Loyalty",
+        "Treue / Loyalität"
+      ],
+      [
+        "Moral development",
+        "Moralische Entwicklung"
+      ]
+    ]
+  }
+]

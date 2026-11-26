@@ -1,0 +1,96 @@
+{
+  "phrases": [
+    [
+      "The Victorian Age was characterised by ...",
+      "Die viktorianische Epoche war gekennzeichnet durch ..."
+    ],
+    [
+      "Victorian novelists often focused on ...",
+      "Viktorianische Romanautoren konzentrierten sich häufig auf ..."
+    ],
+    [
+      "One of the main features of Victorian literature is ...",
+      "Eines der Hauptmerkmale viktorianischer Literatur ist ..."
+    ],
+    [
+      "Dickens criticises the social inequalities of his time.",
+      "Dickens kritisiert die sozialen Ungleichheiten seiner Zeit."
+    ],
+    [
+      "The novel reflects the values and problems of Victorian society.",
+      "Der Roman spiegelt Werte und Probleme der viktorianischen Gesellschaft."
+    ],
+    [
+      "Great Expectations can be considered a Bildungsroman because ...",
+      "Great Expectations kann als Bildungsroman gelten, weil ..."
+    ],
+    [
+      "Pip undergoes a process of moral development.",
+      "Pip durchläuft eine moralische Entwicklung."
+    ],
+    [
+      "Dickens uses Pip’s experiences to show that ...",
+      "Dickens nutzt Pips Erfahrungen, um zu zeigen, dass ..."
+    ],
+    [
+      "Joe represents kindness, honesty and loyalty.",
+      "Joe verkörpert Güte, Ehrlichkeit und Loyalität."
+    ],
+    [
+      "Magwitch’s role challenges conventional social prejudices.",
+      "Magwitchs Rolle stellt verbreitete soziale Vorurteile infrage."
+    ],
+    [
+      "Unlike many Victorian novels, Great Expectations is told by a first-person narrator.",
+      "Anders als viele viktorianische Romane wird Great Expectations von einem Ich-Erzähler erzählt."
+    ],
+    [
+      "The novel suggests that moral values are more important than wealth and social status.",
+      "Der Roman legt nahe, dass moralische Werte wichtiger sind als Reichtum und sozialer Status."
+    ],
+    [
+      "This example supports the argument because ...",
+      "Dieses Beispiel stützt das Argument, weil ..."
+    ],
+    [
+      "The setting can be read as a reflection of ...",
+      "Der Handlungsort lässt sich als Spiegel von ... deuten."
+    ],
+    [
+      "However, this pattern is not a universal rule.",
+      "Dieses Muster ist jedoch keine ausnahmslose Regel."
+    ]
+  ],
+  "model": "Great Expectations is a Victorian novel because it connects individual experience with wider social questions. Pip’s ambition reflects a society that often links success to wealth and rank. His shame about Joe exposes the cruelty of judging people by manners rather than loyalty. Magwitch’s role as benefactor challenges prejudice against a convicted man. The novel is also a Bildungsroman: Pip grows from childhood towards a more mature understanding of himself. Its humanitarian concerns encourage sympathy for people whom respectable society may dismiss. Dickens combines a recognisable social world with Gothic elements in Miss Havisham’s decaying house. Serial publication also helps explain the importance of suspense and revelations. However, the narrative perspective is a significant qualification: adult Pip tells his own story retrospectively, rather than speaking as an omniscient narrator. His reflection makes moral development visible.",
+  "sources": [
+    {
+      "title": "Provided lesson sheet: Victorian_Novel_Great_Expectations.docx",
+      "note": "Primary teaching basis, supplied by the user. All 40 original cards are preserved from victorian_flashcards.json; the TSV was checked for consistency. German notes and the 112 exercises are added teaching material. No textbook photographs or exact abridged novel edition were supplied."
+    },
+    {
+      "title": "New College, Oxford — Victorian literature",
+      "url": "https://www.new.ox.ac.uk/english-literature-through-the-ages/victorian-1837-1900",
+      "note": "Further reading on publishing, social context and women’s authorship."
+    },
+    {
+      "title": "Duke University Libraries — Poets and Novelists",
+      "url": "https://exhibits.library.duke.edu/exhibits/show/mypen/poets_novelists",
+      "note": "Author-work checks and the distinction between male and gender-ambiguous pen names."
+    },
+    {
+      "title": "UCSC Dickens Project — Chronology",
+      "url": "https://dickens.ucsc.edu/resources/dickens-chronology/",
+      "note": "Checks the 1860–1861 serial publication of Great Expectations."
+    },
+    {
+      "title": "Open University — Edward Lear’s nonsense songs",
+      "url": "https://www.open.edu/openlearn/history-the-arts/culture/literature-and-creative-writing/edward-lears-nonsense-songs",
+      "note": "Confirms that literary nonsense includes verse, not only novels."
+    },
+    {
+      "title": "Wisbech & Fenland Museum — Great Expectations",
+      "url": "https://www.wisbechmuseum.org.uk/dickens/",
+      "note": "Museum holding the manuscript; publication and background context."
+    }
+  ]
+}
