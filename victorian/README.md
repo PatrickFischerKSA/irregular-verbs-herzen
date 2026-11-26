@@ -42,7 +42,7 @@ Reset controls show confirmation. Level reset clears that level’s task records
 
 ## Accessibility and platform
 
-Native buttons, radio controls, selects, labelled fields and dialogs support keyboard and touch. Feedback is announced through live regions. Optional hearts/skulls respect reduced motion. English read-aloud uses the browser’s Web Speech API when available; no microphone is used. It depends on installed/browser voices and may not work on every device.
+Native buttons, radio controls, selects, labelled fields and dialogs support keyboard and touch. Feedback is announced through live regions. Optional hearts/skulls respect reduced motion. English or German read-aloud uses the browser’s Web Speech API when available; no microphone is used. It depends on installed/browser voices and may not work on every device.
 
 The CSS responds to phone, tablet and desktop widths. All application paths are relative. No backend, paid API, key, build step, remote fonts or third-party JavaScript is needed.
 
@@ -74,8 +74,10 @@ node victorian/tests/test-course.cjs
 
 The full repository ZIP can be published directly to GitHub Pages. No API keys, private documents, Git metadata or saved learner writing are included.
 
-## Question language mode
+## English / German learning mode
 
-Use **Questions / Fragen: English / Deutsch** above the learning steps. The German mode includes all 112 task questions/statements, all 40 flashcard fronts and core working instructions. Multiple-choice options, matching vocabulary, sentence pieces, gap sentences, models and expected answers remain in English for exam practice. The original card fronts/backs remain unchanged in the data and English mode.
+Use **Language / Sprache: English / Deutsch** above the learning steps. The German mode includes all 112 questions, answer options, corrections, explanations, gap texts, sentence pieces, matching tasks and 24 model answers with criteria. All 40 flashcards have German fronts and backs. Discover lessons, five memory decks and the exam-toolbox model also have German versions. The original English materials remain unchanged in English mode and in the original data files.
 
-The choice is saved in the same local progress record. Switching first captures the current draft and preserves scores, answers, review marks and current activity. English read-aloud uses the original English text. German prompts are supplied in `data/translations-de.json` and its runtime mirror `data/translations-de.js`.
+Both languages use the same question IDs, choice indices, progress, review marks and scores. Switching first captures the current draft and never translates or overwrites learner writing. German gaps accept the German canonical solutions and relevant English alternatives, so an earlier English draft can still be checked. Sentence-piece and matching indices are preserved across languages. Changing language cannot generate extra points.
+
+The choice is saved in the existing local progress record. Read-aloud selects an English or German browser voice for the active language when available. German content is stored in `data/translations-de.json` and its runtime mirror `data/translations-de.js`. Automated checks cover every objective solution in both languages and preserve the original 40 English cards. Browser checks cover translated feedback, German gap answers, card backs, models and switching back to English.
