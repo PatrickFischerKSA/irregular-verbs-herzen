@@ -10,8 +10,10 @@ const document={getElementById:element,addEventListener(){},querySelector(){retu
 let stored={};const localStorage={getItem:k=>stored[k]||null,setItem:(k,v)=>stored[k]=v};const window={addEventListener(){}};
 let app=fs.readFileSync('victorian/app.js','utf8');app=app.slice(0,app.lastIndexOf('renderToolbox();renderSources();'));
 const ctx=vm.createContext({document,localStorage,window,matchMedia:()=>({matches:true}),assert,setTimeout,innerHeight:800});
-vm.runInContext(fs.readFileSync('victorian/data/content.js','utf8')+'\n'+app,ctx);
+vm.runInContext(fs.readFileSync('victorian/data/content.js','utf8')+'\n'+fs.readFileSync('victorian/data/translations-de.js','utf8')+'\n'+app,ctx);
 vm.runInContext(`
+assert.equal(Object.keys(DE.questions).length,112);assert.equal(Object.keys(DE.flashcards).length,40);for(const q of D.questions){state.questionLanguage='de';assert.ok(questionText(q));state.questionLanguage='en';assert.equal(questionText(q),q.prompt);}for(const c of D.flashcards){state.questionLanguage='de';assert.ok(cardQuestion(c));state.questionLanguage='en';assert.equal(cardQuestion(c),c.front);}
+state.questionLanguage='de';persist();assert.equal(JSON.parse(localStorage.getItem(KEY)).questionLanguage,'de');state.questionLanguage='en';
 const objectives=D.questions.filter(q=>q.type!=='open');
 function right(q){if(q.type==='mc')return {choice:String(q.correct)};if(q.type==='tf')return {choice:String(q.correct),correction:q.explanation};if(q.type==='gap')return {gaps:q.answers.map(a=>a[0])};if(q.type==='match')return {matches:q.pairs.map((_,i)=>String(i))};if(q.type==='sentence')return {parts:q.parts.map((_,i)=>i)};}
 for(const q of objectives){assert.equal(evaluateObjective(q,right(q)).correct,true,q.id);assert.ok(evaluateObjective(q,{}).empty,q.id);recordObjective(q,true);assert.equal(state.records[q.id].earned,10);recordObjective(q,true);assert.equal(state.records[q.id].attempts,1);}
@@ -25,4 +27,4 @@ state.level=1;state.cards.c1='know';state.cards.c4='practise';state.drafts['q1-1
 state.level=8;state.cards.c4='know';performReset('level');assert.equal(state.cards.c4,'know');
 performReset('all');assert.equal(Object.keys(state.records).length,0);assert.equal(Object.keys(state.cards).length,0);assert.equal(Object.keys(state.drafts).length,0);assert.equal(state.stage,'discover');assert.equal(memories.size,0);
 `,ctx);
-console.log('PASS: all 88 objective answers and empty guards, no duplicate points, 10/5-point scoring, retry/error history, spelling tolerance, 100 mixed draws covering all 8 levels, scrambled sentences, all 5 memory games, isolated and global reset.');
+console.log('PASS: 112 German prompts and 40 German card questions, English originals preserved; all 88 objective answers and empty guards, no duplicate points, 10/5-point scoring, retry/error history, spelling tolerance, 100 mixed draws covering all 8 levels, scrambled sentences, all 5 memory games, isolated and global reset.');

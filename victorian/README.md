@@ -73,3 +73,9 @@ node victorian/tests/test-course.cjs
 ```
 
 The full repository ZIP can be published directly to GitHub Pages. No API keys, private documents, Git metadata or saved learner writing are included.
+
+## Question language mode
+
+Use **Questions / Fragen: English / Deutsch** above the learning steps. The German mode includes all 112 task questions/statements, all 40 flashcard fronts and core working instructions. Multiple-choice options, matching vocabulary, sentence pieces, gap sentences, models and expected answers remain in English for exam practice. The original card fronts/backs remain unchanged in the data and English mode.
+
+The choice is saved in the same local progress record. Switching first captures the current draft and preserves scores, answers, review marks and current activity. English read-aloud uses the original English text. German prompts are supplied in `data/translations-de.json` and its runtime mirror `data/translations-de.js`.

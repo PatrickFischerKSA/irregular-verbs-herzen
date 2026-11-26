@@ -59,3 +59,5 @@ Each Great Expectations level has its own reset button, clearing only that level
 ## Victorian Literature chapter
 
 `victorian/index.html` adds the full Victorian Novel & Great Expectations course to the existing website. It uses the supplied Word sheet and preserves all 40 original flashcards verbatim, with 8 free levels, 112 additional exercises, 5 memory games, bilingual exam phrases, a 135-word exam model, review, local browser progress, points, read-aloud when supported, and reset controls. Complex free writing uses transparent self-assessment without a simulated automatic grade. See `victorian/README.md` for material, scoring, data files and validation.
+
+The Victorian chapter now also offers **Questions / Fragen: English / Deutsch**. All 112 exercise prompts and all 40 card questions have German versions; English answers and exam vocabulary are retained. Switching language preserves drafts and learning progress.
